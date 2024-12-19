@@ -96,6 +96,9 @@ class TaskController extends Controller
             'description' => $request->description,
             'completed' => $request->completed,
         ];
+        if ($request->title) {
+            $updateDetails['title'] = $request->title;
+        }
         DB::beginTransaction();
         try {
             $task = $this->taskRepositoryInterface->update($updateDetails, $id);
